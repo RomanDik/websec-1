@@ -6,7 +6,8 @@ const historyDiv = document.getElementById('history');
 
 if (!num1Input || !num2Input || !operationSelect || !calculateBtn || !historyDiv) {
     console.error('Не все элементы найдены в HTML');
-    throw new Error('Ошибка инициализации: элементы не найдены');
+    alert('Ошибка загрузки приложения. Обновите страницу.');
+    return; 
 }
 
 let history = [];
@@ -15,9 +16,6 @@ function calculate() {
     num1Input.classList.remove('error');
     num2Input.classList.remove('error');
     historyDiv.innerHTML = '';
-    
-    const num1 = parseFloat(num1Input.value);
-    const num2 = parseFloat(num2Input.value);
     
     if (num1Input.value === '' || num2Input.value === '') {
         if (num1Input.value === '') {
@@ -28,6 +26,8 @@ function calculate() {
         }
         return;
     }
+    const num1 = parseFloat(num1Input.value);
+    const num2 = parseFloat(num2Input.value);
     
     if (operationSelect.value === '/' && num2 === 0) {
         num2Input.classList.add('error');
